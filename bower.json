@@ -1,0 +1,17 @@
+{
+  "name": "selfietoros-self-care",
+  "version": "0.0.1",
+  "authors": [
+    "spiritinlife <george.chailazopoulos@gmail.com>"
+  ],
+  "license": "Proprietary",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "frink-self-care",
+  "version": "0.0.1",
+  "authors": [
+    "dark5un <panagiotis.xinos@gmail.com>"
+  ],
+  "license": "Proprietary",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
