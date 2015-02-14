@@ -19,9 +19,16 @@ var db = mongojs(process.env.MONGOLAB_URL || "mongodb://127.0.0.1/selfietoros",[
 
 
 
+
+app.use(serveStatic("./public"));
+app.use("/bower_components", serveStatic("./bower_components"));
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('views', __dirname + '/views/admin');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -31,11 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.get('/index',function(req,res){
-    res.render(__dirname+"/index.html");
-});
+
 
 app.get('/api/qr',function(req,res){
     var qr = qrCode.qrcode(4, 'M');
@@ -44,6 +47,9 @@ app.get('/api/qr',function(req,res){
 
     res.send(qr.createImgTag(4));    // creates an <img> tag as text
 });
+
+//setup routes
+app.use(require('./routes'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
