@@ -2,48 +2,48 @@
 
 
 
-Entities: 
+Entities:<br> 
 
-User
+User<br>
+	-fbid<br>
+Owner<br>
+	-name<br>
+	-afm<br>
+	-*place<br>
 
-Owner
-	-name
-	-afm
-	-*place
-
-Place
-	-MENU
-	-qrcodes
+Place<br>
+	-MENU<br>
+	-qrcodes<br>
 
 
-Menu tha einai aplo 
-Menu 
--id
--array apo categories
-	[Category,Category,Category]
-	to opoion einai ena object me
-Category {
-    name : " Prwino"
-    array apo items 
-    items : [Item,Item..]
+Menu tha einai aplo<br> 
+Menu <br>
+-id<br>
+-array apo categories<br>
+	[Category,Category,Category]<br>
+	to opoion einai ena object me<br>
+Category {<br>
+    name : " Prwino"<br>
+    array apo items <br>
+    items : [Item,Item..]<br>
 }
-opou to item einaii ena object
--Item
-{
-	price: 3
-	name:"Cappuchino"
-	options: ["metrios","sketos","glukos"]
+opou to item einaii ena object<br>
+-Item<br>
+{<br>
+	price: 3<br>
+	name:"Cappuchino"<br>
+	options: ["metrios","sketos","glukos"]<br>
 }
 
 
-Interesting FrontEnd:
+Interesting FrontEnd:<br>
 
-User
-	-Android/Ios apps	
-	-Site landing Page
-Owner
-	-Android/Ios apps
-	-Site landing page
-	-Personal dashboard
-Place
+User<br>
+	-Android/Ios apps	<br>
+	-Site landing Page<br>
+Owner<br>
+	-Android/Ios apps<br>
+	-Site landing page<br>
+	-Personal dashboard<br>
+Place<br>
 	
