@@ -13,7 +13,10 @@ var app = express();
 
 
 //connect to database
-var db = mongojs(process.env.MONGOLAB_URL);
+console.log(process.env.MONGOLAB_URL);
+
+var db = mongojs(process.env.MONGOLAB_URL || "mongodb://127.0.0.1/selfietoros",['users']);
+
 
 
 // view engine setup
@@ -30,6 +33,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+app.get('/qr',function(req,res){
+    db.users.find(function(error,users){
+            res.json(users);
+    });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,7 +72,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.get('/qr',function(req,res){
-
-});
 module.exports = app;
