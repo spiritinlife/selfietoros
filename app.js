@@ -8,15 +8,15 @@ var mongojs = require('mongojs');
 var qrCode = require('qrcode-npm');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var serveStatic = require("serve-static");
+var redis = require('redis');
 var app = express();
 
-
-//connect to database
+//connect to databasemaster
 console.log(process.env.MONGOLAB_URL);
 
-var db = mongojs(process.env.MONGOLAB_URL || "mongodb://127.0.0.1/selfietoros",['users']);
-
+app.db = mongojs(process.env.MONGOLAB_URL || "mongodb://selfietoros:s3lfi3t0r0s!@ds062797.mongolab.com:62797/selfietoros",['users']);
+app.redis =  redis.createClient();
 
 
 
@@ -24,7 +24,7 @@ app.use(serveStatic("./public"));
 app.use("/bower_components", serveStatic("./bower_components"));
 
 // view engine setup
-app.set('views', __dirname + '/views/admin');
+app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -49,7 +49,7 @@ app.get('/api/qr',function(req,res){
 });
 
 //setup routes
-app.use(require('./routes'));
+app.use(require('./routes')(app));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
