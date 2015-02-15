@@ -9,14 +9,14 @@ var qrCode = require('qrcode-npm');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var serveStatic = require("serve-static");
-var redis = require('redis');
+//var redis = require('redis');
 var app = express();
 
 //connect to databasemaster
 console.log(process.env.MONGOLAB_URL);
 
 app.db = mongojs(process.env.MONGOLAB_URL || "mongodb://selfietoros:s3lfi3t0r0s!@ds062797.mongolab.com:62797/selfietoros",['users']);
-app.redis =  redis.createClient();
+//app.redis =  redis.createClient();
 
 
 
