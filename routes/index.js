@@ -1,13 +1,9 @@
-module.exports = function(app){		
+module.exports = function(app){
   var express = require('express');
   var router = express.Router();
   var security  = require("../utils/security")(app);
   var fs = require("fs");
 
-  /* GET login page. */
-  router.get(["/index","/"], function(req, res, next) {
-    res.render("landing");
-  });
 
 
   /*router.post("/admin/login",function(req,res,next){
@@ -26,7 +22,7 @@ module.exports = function(app){
               });
            }
         });
-    } 
+    }
     else {
       res.sendStatus(401);
     }
@@ -48,7 +44,7 @@ module.exports = function(app){
 
   router.post("/admin/logout",function(req,res,next){
     //check username password in db
-    //security    
+    //security
   });
 
   /* GET home page. */

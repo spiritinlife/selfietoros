@@ -120,7 +120,7 @@ var appMaster = {
             onHoverStop: "off",
             fullScreenOffsetContainer: ""
         });
-        
+
     },
 
     scrollMenu: function(){

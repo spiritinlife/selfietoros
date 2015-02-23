@@ -21,7 +21,6 @@ app.db = mongojs(process.env.MONGOLAB_URL || "mongodb://selfietoros:s3lfi3t0r0s!
 
 
 app.use(serveStatic("./public"));
-app.use("/bower_components", serveStatic("./bower_components"));
 
 // view engine setup
 app.set('views', __dirname + '/views');
@@ -29,10 +28,6 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 
-
-
-
-   
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -44,6 +39,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
+app.get(["/index","/"], function(req, res, next) {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
 app.get('/api/qr',function(req,res){
     var qr = qrCode.qrcode(4, 'M');
     qr.addData("Hello");
@@ -52,8 +51,13 @@ app.get('/api/qr',function(req,res){
     res.send(qr.createImgTag(4));    // creates an <img> tag as text
 });
 
+
+app.get("*",function(req,res){
+  res.sendFile(path.join(__dirname, 'public/error.html'));
+})
+
 //setup routes
-app.use(require('./routes')(app));
+//app.use(require('./routes')(app));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
