@@ -2,7 +2,11 @@
 
 
 
-Entities:<br> 
+// mongodb://iorder:redroi@ds062807.mongolab.com:62807/MongoLab-l
+// usr : iorder pwd : redroi
+// shell con mongo ds062807.mongolab.com:62807/MongoLab-l -u iorder -p redroi
+
+Entities:<br>
 
 User<br>
 	-fbid<br>
@@ -16,7 +20,7 @@ Place<br>
 	-qrcodes<br>
 
 
-Menu tha einai aplo<br> 
+Menu tha einai aplo<br>
 Menu <br>
 -id<br>
 -array apo categories<br>
@@ -46,4 +50,3 @@ Owner<br>
 	-Site landing page<br>
 	-Personal dashboard<br>
 Place<br>
-	
