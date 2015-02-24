@@ -25,13 +25,6 @@ angular.module('app')
           $stateProvider.state('site', {
                 abstract: true,
                 template: '<ui-view/>',
-                resolve: {
-                  authorize: ['authorization',
-                    function(authorization) {
-                      return authorization.authorize();
-                    }
-                  ]
-                }
               })
               .state('app', {
                   abstract : true,

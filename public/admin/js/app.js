@@ -106,7 +106,7 @@ angular.module('app', [
             var isAuthenticated = principal.isAuthenticated();
 
             if ($rootScope.toState.data.roles && $rootScope.toState.data.roles.length > 0 && !principal.isInAnyRole($rootScope.toState.data.roles)) {
-              if (isAuthenticated) $state.go('access.signin'); // user is signed in but not authorized for desired state
+              if (isAuthenticated) $state.go('app.menu_1'); // user is signed in but not authorized for desired state
               else {
                 // user is not authenticated. store the state they wanted before you
                 // send them to the signin state, so you can return them when you're done
@@ -114,7 +114,7 @@ angular.module('app', [
                 $rootScope.returnToStateParams = $rootScope.toStateParams;
 
                 // now, send them to the signin state so they can log in
-                $state.go('access.signin');
+                $state.go('app.menu_1');
               }
             }
         });
