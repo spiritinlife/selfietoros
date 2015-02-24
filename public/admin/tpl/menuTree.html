@@ -1,0 +1,71 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MenuTreeController">
+  <div ui-tree>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h3>Tree view
+          <!--<a href="" class="btn btn-default pull-right" ng-click="collapseAll()">Collapse all</a>
+          <a href="" class="btn btn-default pull-right" ng-click="expandAll()">Expand all</a>-->
+          <a href="" class="btn btn-default pull-right" ng-click="newCategory()">New Category</a>
+          <a href="" class="btn btn-default btn-warning pull-right" ng-click="moveLastToTheBegginig()">Move Last To The Begginig</a>
+
+        </h3>
+
+        <!-- Nested node template -->
+        <script type="text/ng-template" id="items_renderer.html">
+          <div ui-tree-handle class="tree-node tree-node-content">
+            <a class="btn btn-success btn-xs" ng-if="item.options && item.options.length > 0" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
+            <span ng-hide="editing" ng-click="editing = true">{{item.name}}</span>
+            <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
+            <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+            <form ng-show="editing" ng-submit="editing = false">
+              <input type="text" ng-model="item.name" placeholder="item.name"/>
+              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span></button>
+            </form>
+          </div>
+          <ol ui-tree-nodes="" ng-model="item.options" ng-class="{hidden: collapsed}">
+            <li ng-repeat="option in item.options" ui-tree-node data-collapsed="true">
+              <div ui-tree-handle>
+              <span ng-hide="editing" ng-click="editing = true">{{option.name}}</span>
+              <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
+              <form ng-show="editing" ng-submit="editing = false">
+                <input type="text" ng-model="option.name" placeholder="option.name"/>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span></button>
+              </form>
+            </div>
+            </li>
+          </ol>
+        </script>
+        <script type="text/ng-template" id="categories_renderer.html">
+          <div ui-tree-handle class="tree-node tree-node-content" >
+            <a class="btn btn-success btn-xs" ng-if="category.items && category.items.length > 0" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
+            <span ng-hide="editing" ng-click="editing = true">{{category.name}}</span>
+            <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
+            <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+            <form ng-show="editing" ng-submit="editing = false">
+              <input type="text" ng-model="category.name" placeholder="category.name"/>
+              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span></button>
+            </form>
+          </div>
+          <ol ui-tree-nodes="" ng-model="category.items" ng-class="{hidden: collapsed}">
+            <li ng-repeat="item in category.items" ui-tree-node ng-include="'items_renderer.html'" data-collapsed="true">
+            </li>
+          </ol>
+        </script>
+        <div ui-tree id="tree-root" data-drag-delay="500" >
+          <ol ui-tree-nodes="" ng-model="categories" >
+            <li ng-repeat="category in categories" ui-tree-node ng-include="'categories_renderer.html'" data-collapsed="true"></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <h3>Data binding</h3>
+        <div class="info">
+            {{info}}
+        </div>
+        <pre class="code">{{ categories | json }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

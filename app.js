@@ -31,8 +31,9 @@ require('./models')(app, mongoose);
 app.use(serveStatic("./public"));
 // view engine setup
 app.set('views', __dirname + '/views/admin');
-//app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'jade');
+app.engine('html', require('ejs').renderFile);
+//app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 
 app.disable('x-powered-by');

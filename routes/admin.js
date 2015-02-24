@@ -17,8 +17,8 @@ module.exports = function(app){
 
   /* GET home page. */
   router.get(["/admin","/admin/index"], function(req, res, next) {
-    res.locals.title = "iorder";
-    res.locals.brand = "iorder";
+  //  res.locals.title = "iorder";
+  //  res.locals.brand = "iorder";
   /*  res.locals.menu = {
       categories : [
         {name:"Kafes",items:[
@@ -35,10 +35,10 @@ module.exports = function(app){
         }
       ]
     };*/
-    res.locals.menu = {
-      categories : []
-    };
-    res.render("home.jade");
+  //  res.locals.menu = {
+  //    categories : []
+  //  };
+    res.render("index.html");
   });
 
 
