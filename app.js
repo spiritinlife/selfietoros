@@ -6,8 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var qrCode = require('qrcode-npm');
-var routes = require('./routes/index');
-var users = require('./routes/users');
 var serveStatic = require("serve-static");
 var app = express();
 
@@ -32,14 +30,13 @@ require('./models')(app, mongoose);
 
 app.use(serveStatic("./public"));
 // view engine setup
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('views', __dirname + '/views/admin');
+//app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'jade');
 
 
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.disable('x-powered-by');
+app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -155,12 +152,13 @@ app.get('/api/qr',function(req,res){
 });
 
 
+//setup routes
+app.use(require('./routes/admin')(app));
+
+
 app.get("*",function(req,res){
   res.sendFile(path.join(__dirname, 'public/error.html'));
 })
-
-//setup routes
-//app.use(require('./routes')(app));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
