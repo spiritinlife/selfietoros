@@ -22,18 +22,11 @@ angular.module('app')
 
           $urlRouterProvider
               .otherwise('/app/dashboard-v1');
-          $stateProvider.state('site', {
-                abstract: true,
-                template: '<ui-view/>',
-              })
+          $stateProvider
               .state('app', {
                   abstract : true,
                   url: '/app',
-                  templateUrl: 'tpl/app.html',
-                  data: {
-                    roles: ['Admin']
-                  },
-                  parent : 'site'
+                  templateUrl: 'tpl/app.html'
               })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
