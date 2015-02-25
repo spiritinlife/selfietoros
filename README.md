@@ -1,6 +1,8 @@
 # selfietoros
 
-
+git push azure dev
+git push origin dev:openshift
+git push origin dev
 
 // mongodb://iorder:redroi@ds062807.mongolab.com:62807/MongoLab-l
 // usr : iorder pwd : redroi
