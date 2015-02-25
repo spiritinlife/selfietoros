@@ -16,10 +16,6 @@ module.exports = function(app){
   });
 
 
-  router.get("/admin",function(req,res)
-  {
-    res.redirect('/admin/');
-  });
   /* GET home page. */
   router.get("/admin/", function(req, res, next) {
   //  res.locals.title = "iorder";
