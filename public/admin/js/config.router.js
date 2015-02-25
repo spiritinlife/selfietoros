@@ -22,11 +22,25 @@ angular.module('app')
 
           $urlRouterProvider
               .otherwise('/app/dashboard-v1');
-          $stateProvider
+          $stateProvider.state('site', {
+                abstract: true,
+                template: '<ui-view/>',
+                resolve: {
+                  authorize: ['authorization',
+                    function(authorization) {
+                      return authorization.authorize();
+                    }
+                  ]
+                }
+              })
               .state('app', {
                   abstract : true,
                   url: '/app',
-                  templateUrl: 'tpl/app.html'
+                  templateUrl: 'tpl/app.html',
+                  data: {
+                    roles: ['Admin']
+                  },
+                  parent : 'site'
               })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',

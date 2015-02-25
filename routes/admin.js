@@ -16,7 +16,7 @@ module.exports = function(app){
   });
 
   /* GET home page. */
-  router.get(["/admin","/admin/index"], function(req, res, next) {
+  router.get(["/admin","/admin/index","/admin/"], function(req, res, next) {
   //  res.locals.title = "iorder";
   //  res.locals.brand = "iorder";
   /*  res.locals.menu = {

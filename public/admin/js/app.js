@@ -18,9 +18,10 @@ angular.module('app', [
 
 ]).factory('principal', ['$q', '$http', '$timeout',
   function($q, $http, $timeout) {
-    var _identity = undefined,
+    var _identity = {},
       _authenticated = true;
 
+      _identity.roles = ['Admin'];
 
     return {
       isIdentityResolved: function() {
