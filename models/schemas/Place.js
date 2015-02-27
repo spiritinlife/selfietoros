@@ -1,6 +1,7 @@
 'use strict';
 
 exports = module.exports = function(app, mongoose) {
+
   var placeSchema = new mongoose.Schema({
     password: String,
     email: { type: String, unique: true },

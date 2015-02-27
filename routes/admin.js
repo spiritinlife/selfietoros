@@ -4,6 +4,47 @@ module.exports = function(app){
 
 
 
+  router.post("/admin/place/menu",function(req,res){
+    if (req.body){
+
+        app.db.models.Menu.create({ place_id : req.body.place_id , categories : req.body.categories },function(err,menu){
+          console.log(req.body);
+            if (err){
+              res.status(400).json({
+                error:"No menu defined",
+                data : []
+              });
+            }
+            else{
+              res.status(200).json({
+                error:"menu created",
+                data : [menu]
+              });
+            }
+          });
+    }
+    else{
+      res.status(400).json({
+        error:"No menu defined",
+        data:[]
+      });
+    }
+  });
+
+  router.get("/admin/place/:id/menu",function(req,res){
+    app.db.models.Menu.findOne({place_id : req.params.id},{}, { sort: { 'created_at' : -1 } }, function(err,menu){
+      if (err){
+        res.status(400).json({
+          error: "No menu found",
+          data : []
+        });
+      }
+      else{
+        res.status(200).json(menu);
+      }
+    });
+  });
+
 
   router.post("/admin/logout",function(req,res,next){
     //check username password in db
