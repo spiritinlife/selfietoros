@@ -81,7 +81,7 @@ app.controller('MenuTreeController', ['$scope', '$http', '$localStorage', functi
          item_options : []
        });
      }
-     else if (nodeData.options){// then we add an option in a certain item
+     else if (nodeData.item_options){// then we add an option in a certain item
       nodeData.options.push({
          name : "Option Name",
          price : "0"
